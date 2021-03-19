@@ -1,0 +1,55 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<title>Express-CORS</title>
+<script type="text/javascript" src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap-theme.min.css"/>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js"></script>
+<script>
+function ping(){
+  $('#result').html( '' );
+  $.ajax({
+    type: "GET",
+    url: "https://appdev3-app1.mybluemix.net/ping",
+    success: function( result ){
+      $('#result').html( JSON.stringify( result ) );
+    },
+    error: function( jqXHR, textStatus, errorThrown ){
+      console.log( textStatus + " : " + errorThrown );
+    }
+  });
+}
+</script>
+<style>
+body{
+  padding-top: 60px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <!-- //navi -->
+  <nav class="navbar fixed-top">
+    <a class="navbar-brand" href="/">Express-CORS</a>
+    <div class="navbar-nav mr-auto">
+    </div>
+    <div class="navbar-nav">
+      <li class="nav-item" id="navitem">
+      </li>
+    </div>
+  </nav>
+  <!-- navi// -->
+
+  <div class="container">
+    <button class="btn btn-primary" onClick="ping();">Ping</button>
+  </div>
+
+  <div class="container">
+    <textarea class="form-control" id="result" readonly></textarea>
+  </div>
+</div>
+
+</body>
+</html>
+
